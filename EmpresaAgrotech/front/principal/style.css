@@ -1,0 +1,9 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    color: #e4e0d8;
+    background-image: url(/front/assets/fazenda.png);
+}
+
+.model{
+    display: none;
+}

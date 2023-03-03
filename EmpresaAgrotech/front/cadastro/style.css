@@ -20,8 +20,6 @@ header {
 header>h4 {
     font-size: 8vh;
     color: #37301c;
-    -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: #e0ded8;
 }
 
 main {
@@ -70,7 +68,7 @@ input {
 form {
     height: 50vh;
     width: 30vh;
-    border: 6px solid #faf9f7;
+    border: 2px solid #faf9f7;
     display: grid;
     align-items: center;
     justify-content: center;

@@ -21,10 +21,10 @@ function login() {
         .then(res => {
             console.log(res)
             if (res.status === 202) {
-                alert("Deu certo manito")
-                window.location.href = ''
+                alert("Deu certo, parabens")
+                window.location.href = '../principal'
             } else {
-                alert("Tenta denovo, não sabe a senha que colocou")
+                alert("Tenta denovo, errou a senha")
             }
         })
         .then(response => console.log(response))
