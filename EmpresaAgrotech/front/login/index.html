@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroTech</title>
+    <title>Login</title>
+    <!-- lib de icons -->
     <link rel="stylesheet" href="style.css">
-</head>
+   </head>
+
 <body>
-    <header><h4>AgroTech</h4></header>
+    <header><h4>AGROTECH</h4></header>
     <main>
         <div class="back">
 
@@ -16,21 +16,19 @@
         <form>
             <div>
                 <h2>Email:</h2>
-                <input type="email" id="email" placeholder="Digite seu e-mail:">
+                <input type="email" id="email" placeholder="Digite seu e-mail">
             </div>
             <div>
-                <h2>Senha:</h2>
-                <input type="password" id="password" placeholder="Digite sua senha:">
+                <h2>Senha</h2>
+                <input type="password" id="password" placeholder="Digite sua senha">
                 <span class="lnr lnr-eye"></span>
             </div>
             <div>
-                <p class="link">Se você não contém um cadastro<br><a href="http://127.0.0.1:5500/front/cadastro/index.html">clique aqui</a></p>
-            </div>
-            <div>
-                <input type="submit" value="Login" onclick="login()"></button>
+                <button id="btn" onclick="login()">Login</button> 
             </div>
         </form>
     </main>
 </body>
 <script src="index.js"></script>
+
 </html>

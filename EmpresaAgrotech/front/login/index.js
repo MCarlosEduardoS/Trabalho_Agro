@@ -18,19 +18,19 @@ function login() {
     };
 
     fetch(urlLogin, options)
-        .then(res => {
-            console.log(res)
-            if (res.status === 202) {
-                alert("Deu certo, parabens")
-                window.location.href = '../principal'
-            } else {
-                alert("Tenta denovo, errou a senha")
+        .then(response => {
+            if (response.status == 404) {
+                document.getElementById("error-message").style.display = "block"
+            } if (response.status == 200) {
+                window.location.href = "../principal/index.html"
             }
+            return response.json()
         })
-        .then(response => console.log(response))
-        .catch(err => console.error(err));
-
+        .then(resp => {
+            localStorage.setItem('user', JSON.stringify({ "id": resp.result.id, "nome": resp.result.nome, "cargo": resp.result.cargo, "token": resp.result.token }));
+        })
 }
+
 
 btn.addEventListener('click', function () {
     let input = document.querySelector('#password');
@@ -40,3 +40,7 @@ btn.addEventListener('click', function () {
         input.setAttribute('type', 'password');
     }
 });
+
+document.getElementById("btn").addEventListener("click", function (event) {
+    event.preventDefault()
+})

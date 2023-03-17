@@ -1,16 +1,17 @@
-const urlFrotas = '';
-const urlServicos = '';
-const urlMotorista = '';
+const urlFrotas = 'http://localhost:3000/frotas';
+const urlServicos = 'http://localhost:3000/servicos';
+const urlMotorista = 'http://localhost:3000/motorista';
 
-const principalSuperior = document.querySelector('');
-const listaFrotas = document.querySelector('');
-const listaMotoristas = document.querySelector('');
+const principalSuperior = document.querySelector('.readSuperior');
+const listaFrotas = document.querySelector('.readFrotas');
+const listaMotoristas = document.querySelector('.readMotoristas');
 
-const principalInferior = document.querySelector('');
-const listaServicos = document.querySelector('');
-const listaManutencao = document.querySelector('');
+const principalInferior = document.querySelector('.readInferior');
+const listaServicos = document.querySelector('.readServicos');
+const listaManutencao = document.querySelector('.readManutencao');
 
 function carregar() {
+    //frotas
     const optionsFrotas = { method: 'GET' };
 
     fetch(urlFrotas, optionsFrotas)
@@ -27,4 +28,20 @@ function carregar() {
             });
         })
         .catch(err => console.error(err));
+
+    //Servicos
+    // const optionsServicos = { method: 'GET' };
+
+    // fetch(urlServicos, optionsServicos)
+    //     .then(response => response.json())
+    //     .then(response => console.log(response))
+    //     .catch(err => console.error(err));
+
+    //Motorista
+    // const optionsMotorista = { method: 'GET' };
+
+    // fetch(urlMotorista, optionsMotorista)
+    //     .then(response => response.json())
+    //     .then(response => console.log(response))
+    //     .catch(err => console.error(err));
 }

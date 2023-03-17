@@ -8,13 +8,11 @@ const autenticacao = (req, res,next) => {
         else{
             if(data.cargo === "Gerente"){
                 next()
-            
             }else {
                 res.status(401).end()
             }
         }
     })
-    
 } 
 
 module.exports = {

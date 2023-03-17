@@ -1,12 +1,17 @@
 const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const { PrismaClient } = require('@prisma/client');
+const bcrypt = require('bcryptjs');
 
 const prisma = new PrismaClient();
 
 const create = async (req, res) => {
+    data = req.body
+
+    data.senha = await bcrypt.hash(req.body.senha, 10)
+
     let usuario = await prisma.Usuario.create({
-        data: req.body
+        data: data
     });
 
     res.status(200).json(usuario).end();
@@ -19,27 +24,32 @@ const read = async (req, res) => {
 }
 
 const login = async (req, res) => {
-    const usuario = await prisma.Usuario.findMany({
-        where: {
-            AND: [
-                { email: req.body.email },
-                { senha: req.body.senha }
-            ]
-        }
+
+    const user = await prisma.usuario.findFirst({
+        where: { email: req.body.email }
+
+    }).catch(err => {
+        console.log(err)
     })
 
-    if (usuario.length > 0) {
+    if (user) {
+        //comparando a senha que o usuario digitou com a senha criptgrafada
+        if (await bcrypt.compare(req.body.senha, user.senha)) {
+            var result = user
 
-        jwt.sign(usuario[0], process.env.KEY, { expiresIn: '10h' }, function (err, token) {
-            if (err == null) {
-                usuario[0]["token"] = token
-                res.status(202).json({ usuario }).end()
-            } else {
-                res.status(404).json(err).end()
-            }
-        })
+            jwt.sign(result, process.env.KEY, { expiresIn: '10h' }, function (err, token) {
+
+                if (err == null) {
+                    // adicionando um token quando o usuário logar
+                    result["token"] = token
+                    res.status(200).json({ result }).end()
+                } else {
+                    res.status(404).json(err).end()
+                }
+            })
+        }
     } else {
-        res.status(404).json({"menssagem": "usuario nao"}).end()  
+        res.status(404).json({ "result": "usuario não encontrado" }).end()
     }
 }
 

@@ -28,41 +28,57 @@
 // 	options: options
 // });
 // Dados do gráfico
-var data = {
-	labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
-	datasets: [
-		{
-			data: [10, 20, 30, 40, 50, 60],
-			backgroundColor: [
-				"#FF6384",
-				"#36A2EB",
-				"#FFCE56",
-				"#C9DE55",
-				"#4BC0C0",
-				"#9966FF"
-			],
-			hoverBackgroundColor: [
-				"#FF6384",
-				"#36A2EB",
-				"#FFCE56",
-				"#C9DE55",
-				"#4BC0C0",
-				"#9966FF"
-			]
-		}
-	]
-};
-
+// var data = {
+// 	labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho"],
+// 	datasets: [
+// 		{
+// 			data: [10, 20, 30, 40, 50, 60],
+// 			backgroundColor: [
+// 				"#FF6384",
+// 				"#36A2EB",
+// 				"#FFCE56",
+// 				"#C9DE55",
+// 				"#4BC0C0",
+// 				"#9966FF"
+// 			],
+// 			hoverBackgroundColor: [
+// 				"#FF6384",
+// 				"#36A2EB",
+// 				"#FFCE56",
+// 				"#C9DE55",
+// 				"#4BC0C0",
+// 				"#9966FF"
+// 			]
+// 		}
+// 	]
+// };
 // Configurações do gráfico
-var options = {
-	responsive: true,
-	maintainAspectRatio: false
-};
+// var options = {
+// 	responsive: true,
+// 	maintainAspectRatio: false
+// };
 
-// Criação do gráfico
-var ctx = document.getElementById("myChart").getContext("2d");
-var myChart = new Chart(ctx, {
-	type: 'pie',
-	data: data,
-	options: options
-});
+// // Criação do gráfico
+// var ctx = document.getElementById("myChart").getContext("2d");
+// var myChart = new Chart(ctx, {
+// 	type: 'pie',
+// 	data: data,
+// 	options: options
+// });
+const cadastroBtn = document.getElementById("cadastro-btn");
+const modalCadastro = document.getElementById("modal-cadastro");
+const closeCadastro = document.getElementsByClassName("close")[0];
+
+cadastroBtn.onclick = function() {
+  modalCadastro.style.display = "block";
+}
+
+closeCadastro.onclick = function() {
+  modalCadastro.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modalCadastro) {
+    modalCadastro.style.display = "none";
+  }
+}
